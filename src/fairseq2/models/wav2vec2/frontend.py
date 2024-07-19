@@ -200,29 +200,29 @@ class Wav2Vec2Frontend(TransformerFrontend):
         print("A-weight", self.model_dim_proj.state_dict())
         if self.model_dim_proj is not None:
             seqs = self.model_dim_proj(seqs)
-        print("B", seqs)
+        # print("B", seqs)
 
         if self.first_pass_dropout is not None:
             seqs = self.first_pass_dropout(seqs)
-        print("C", seqs)
+        # print("C", seqs)
 
         if masker is not None:
             seqs, temporal_mask = masker(seqs, padding_mask)
         else:
             temporal_mask = None
-        print("D", seqs)
+        # print("D", seqs)
 
         if self.pos_encoder is not None:
             seqs = self.pos_encoder(seqs, padding_mask)
-        print("E", seqs)
+        # print("E", seqs)
 
         if self.layer_norm is not None:
             seqs = self.layer_norm(seqs)
-        print("F", seqs)
+        # print("F", seqs)
 
         if self.dropout is not None:
             seqs = self.dropout(seqs)
-        print("G", seqs)
+        # print("G", seqs)
 
         return seqs, padding_mask, temporal_mask
 
