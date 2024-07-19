@@ -197,6 +197,7 @@ class Wav2Vec2Frontend(TransformerFrontend):
               :math`S` is the sequence length.
         """
         print("A", seqs)
+        print("A-weight", self.model_dim_proj.state_dict())
         if self.model_dim_proj is not None:
             seqs = self.model_dim_proj(seqs)
         print("B", seqs)
