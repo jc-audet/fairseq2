@@ -196,25 +196,32 @@ class Wav2Vec2Frontend(TransformerFrontend):
               *Shape:* :math:`(N,S)`, where :math:`N` is the batch size and
               :math`S` is the sequence length.
         """
+        print("A", seqs)
         if self.model_dim_proj is not None:
             seqs = self.model_dim_proj(seqs)
+        print("B", seqs)
 
         if self.first_pass_dropout is not None:
             seqs = self.first_pass_dropout(seqs)
+        print("C", seqs)
 
         if masker is not None:
             seqs, temporal_mask = masker(seqs, padding_mask)
         else:
             temporal_mask = None
+        print("D", seqs)
 
         if self.pos_encoder is not None:
             seqs = self.pos_encoder(seqs, padding_mask)
+        print("E", seqs)
 
         if self.layer_norm is not None:
             seqs = self.layer_norm(seqs)
+        print("F", seqs)
 
         if self.dropout is not None:
             seqs = self.dropout(seqs)
+        print("G", seqs)
 
         return seqs, padding_mask, temporal_mask
 
