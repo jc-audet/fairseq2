@@ -200,7 +200,7 @@ class Wav2Vec2Frontend(TransformerFrontend):
         print("A-weight", self.model_dim_proj.state_dict())
         if self.model_dim_proj is not None:
             seqs = self.model_dim_proj(seqs)
-        # print("B", seqs)
+        print("B", seqs)
 
         if self.first_pass_dropout is not None:
             seqs = self.first_pass_dropout(seqs)
