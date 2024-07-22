@@ -155,7 +155,6 @@ def _generate_mask(indices: Tensor, max_row_len: int) -> Tensor:
     
     # Set elements corresponding to masked indices to 1.
     float_mask.scatter_(1, indices, 1.0)
-    breakpoint()
     if float_mask.sum(1).min() != float_mask.sum(1).max():
     
         indices = [(torch.unique(row), len(row[0])) for row in torch.split(indices, 1, dim=0)]
