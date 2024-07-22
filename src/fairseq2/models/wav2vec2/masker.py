@@ -108,7 +108,6 @@ class Wav2Vec2Masker(Module):
             min_num_spans=self.min_num_temporal_mask_spans,
             device=seqs.device,
         )
-        
         assert temporal_mask is not None
 
         seqs[temporal_mask] = self.temporal_mask_embed.type_as(seqs)
