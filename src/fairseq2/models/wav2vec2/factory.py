@@ -78,7 +78,7 @@ class Wav2Vec2Config:
     from the transformer. """
 
     # Mask
-    temporal_mask_span_len: int = 10
+    temporal_mask_span_len: int = 20
     """The length of each temporal mask span that is applied over time steps."""
 
     max_temporal_mask_prob: float = 0.69
